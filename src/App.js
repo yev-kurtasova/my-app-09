@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 import axios from 'axios';
 
@@ -9,6 +9,12 @@ function App() {
 
   const key = 'db28ed587957b83b6f4cc48e04ba39a6';
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${key}&lang=ua`
+
+  useEffect(() => {
+    axios.get(`https://api.openweathermap.org/data/2.5/weather?q=kyiv&units=metric&appid=${key}&lang=ua`)
+    .then(res => setData(res.data))
+    .catch(err => console.error(err));
+  }, [])
 
   const onSearchWeather = (e) => {
     if (e.key === 'Enter') {
