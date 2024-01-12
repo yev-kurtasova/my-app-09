@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './App.css';
+import axios from 'axios';
 
 function App() {
 
@@ -11,12 +12,9 @@ function App() {
 
   const onSearchWeather = (e) => {
     if (e.key === 'Enter') {
-      fetch(url)
-        .then(response => response.json())
-        .then(res => {
-          console.log(res);
-          setData(res);
-        })
+      axios.get(url).then(response => setData(response.data))
+      .catch(err => console.warn(err))
+        
       setCity('');
 
     }
@@ -34,19 +32,40 @@ function App() {
         />
       </div>
       <div className="container">
+        {data.name !== undefined && (
+          <>
         <div className="header">
           <div className="city">
             <p>{data.name}</p>
           </div>
+        </div>
 
-          <div className="temp">
-            {data.main && <h1>{data.main.temp.toFixed()}°C</h1>}
+        <div className="temp">
+          {data.main && <h1>{data.main.temp.toFixed()}°C</h1>}
+        </div>
+
+        <div className="desc">
+          {data.weather ? <p>{data.weather[0].main}</p> : null}
+        </div>
+
+        <div className="footer">
+          <div className="feels">
+            {data.main ? <p className='bold'>{data.main.feels_like.toFixed()}°C</p> : null}
+            <p>Відчувається як </p>
+          </div>
+          
+          <div className="humidity">
+            {data.main && <p className='bold'>{data.main.humidity}%</p>}
+            <p>Вологість </p>
           </div>
 
-          <div className="desc">
-            {data.weather ? <p>{data.weather[0].main}</p> : null}
+          <div className="wind">
+            {data.wind && <p className='bold'> {data.wind.speed} м/с</p>}
+            <p>Вітер</p>
           </div>
         </div>
+        </>
+        )}
       </div>
     </div>
   );

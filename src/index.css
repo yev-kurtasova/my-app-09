@@ -1,13 +1,71 @@
-body {
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.app::before {
+  content: '';
+  background: url('./images/ocean_0.jpg') no-repeat center center/cover;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.inp-field {
+  text-align: center;
+  padding: 1rem;
+}
+
+.inp-field input {
+  padding: .7rem 1.5rem;
+  font-size: 1.2rem;
+  border-radius: 15px;
+  border: 1px solid;
+  background: rgba(255, 255, 255, 0.5);
+  color: rgb(254, 250, 244);
+}
+
+.container {
+  margin-top: 10hv;
+  text-align: center;
+
+}
+
+.city p {
+  font-style: oblique;
+  font-size: 3rem;
+  color: #fff;
+}
+
+.temp h1 {
+  color: #fff;
+  font-size: 10rem;
+}
+
+.desc p {
+  color: #fff;
+  font-size: 2rem;
+}
+
+.footer {
+  margin: 30vh auto;
+  margin-bottom: 0;
+  color: #fff;
+  border-radius: 15px;
+  max-width: 400px;
+  background: rgba(34, 47, 56, 0.7);
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.bold {
+  font-weight: 800;
+}
+
+.feels p, .humidity p, .wind p {
+  font-size: 1.35rem;
+  text-align: center;
 }
