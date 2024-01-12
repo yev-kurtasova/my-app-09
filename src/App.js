@@ -8,7 +8,7 @@ function App() {
   const [city, setCity] = useState('');
 
   const key = 'db28ed587957b83b6f4cc48e04ba39a6';
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${key}`
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${key}&lang=ua`
 
   const onSearchWeather = (e) => {
     if (e.key === 'Enter') {
@@ -45,7 +45,7 @@ function App() {
         </div>
 
         <div className="desc">
-          {data.weather ? <p>{data.weather[0].main}</p> : null}
+          {data.weather ? <p>{data.weather[0].description}</p> : null}
         </div>
 
         <div className="footer">
